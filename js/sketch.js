@@ -1,7 +1,7 @@
 class Sketch extends Engine {
   preload() {
     // parameters
-    this._cols = 6;
+    this._cols = 8;
     this._border = 0.2;
     this._background_color = "hsl(35, 49%, 86%)";
     this._palette = [
@@ -11,14 +11,17 @@ class Sketch extends Engine {
       { color: "hsl(340, 9%, 13%)", bias: 1, } // black
     ];
     this._particles_number = 20000;
+    // setup download button
+    document.querySelector("#download").addEventListener("click", () => this._download());
   }
 
   setup() {
     console.clear();
 
+    // border calculations
     const inner_size = this.width * (1 - this._border);
     const inner_border = this._border * this.width;
-
+    // size and displacement calculations
     const scl = inner_size / this._cols;
     const dpos = inner_border / 2;
 
@@ -57,6 +60,9 @@ class Sketch extends Engine {
     // create particles to add some "old" texture
     this._particles = [];
     for (let i = 0; i < this._particles_number; i++) this._particles.push(new Particle(this.width));
+
+    // create signature
+    this._signature = new Signature(this.width);
   }
 
   draw() {
@@ -71,12 +77,20 @@ class Sketch extends Engine {
     this._tiles.forEach(t => t.show(this.ctx));
     // draw particles
     this._particles.forEach(p => p.show(this._ctx));
+    // draw signature
+    this._signature.show(this.ctx);
+
+    // stop looping, there's no need to keep refreshing
     this.noLoop();
   }
 
   click() {
     this.setup();
     this.loop();
+  }
+
+  _download() {
+    this.saveAsImage("bauhaus-time!");
   }
 }
 

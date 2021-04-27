@@ -6,7 +6,7 @@ class Tile {
     this._palette = [...palette];
     this._background_color = background_color;
 
-    this._border = 0.1;
+    this._border = 0.05;
     this._scl = scl * (1 - this._border);
     this._border_dpos = this._border * scl / 2;
 
@@ -25,7 +25,8 @@ class Tile {
       { bias: 10, }, // 9 alternating lines
       { bias: 4, }, // 10 rectangle with holes
       { bias: 4, }, // 11 circles grid
-      { bias: 30, }, // EMPTY
+      { bias: 10, }, // 12 angular triangle
+      { bias: 20, }, // EMPTY
     ];
     for (let i = 0; i < this._biases.length; i++) this._biases[i].mode = i;
 
@@ -40,7 +41,7 @@ class Tile {
     }
 
     //this._rotation = 0;
-    //this._mode = 11;
+    //this._mode = 12;
   }
 
   show(ctx) {
@@ -50,6 +51,7 @@ class Tile {
     // translate to account for border
     ctx.translate(this._border_dpos, this._border_dpos);
     ctx.rotate(this._rotation);
+    ctx.strokeStyle = this._background_color;
 
     if (this._mode == 0) {
       // two arches (side by side)
@@ -158,16 +160,21 @@ class Tile {
       ctx.restore();
     } else if (this._mode == 8) {
       // diagonally separated colors
+      const height = this._scl;
+
       ctx.save();
-      ctx.translate(-this._scl / 2, -this._scl / 2);
-      ctx.fillStyle = this._palette[0];
-      ctx.fillRect(0, 0, this._scl, this._scl);
-      ctx.fillStyle = this._palette[1];
-      ctx.beginPath();
-      ctx.moveTo(0, 0);
-      ctx.lineTo(this._scl, this._scl);
-      ctx.lineTo(0, this._scl);
-      ctx.fill();
+      for (let i = 0; i < 2; i++) {
+        ctx.save();
+        ctx.rotate(Math.PI * i);
+        ctx.translate(-this._scl / 2, -this._scl / 2);
+        ctx.fillStyle = this._palette[i];
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(height, height);
+        ctx.lineTo(0, height);
+        ctx.fill();
+        ctx.restore();
+      }
       ctx.restore();
     } else if (this._mode == 9) {
       // alternating lines
@@ -227,6 +234,18 @@ class Tile {
           ctx.fill();
         }
       }
+      ctx.restore();
+    } else if (this._mode == 12) {
+      // angular triangle
+      const height = this._scl;
+      ctx.save();
+      ctx.translate(-this._scl / 2, -this._scl / 2);
+      ctx.fillStyle = this._palette[0];
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(height, height);
+      ctx.lineTo(0, height);
+      ctx.fill();
       ctx.restore();
     }
 
