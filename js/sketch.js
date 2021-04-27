@@ -10,18 +10,19 @@ class Sketch extends Engine {
       { color: "hsl(358, 86%, 52%)", bias: 8, }, // red
       { color: "hsl(340, 9%, 13%)", bias: 1, } // black
     ];
+    this._particles_number = 20000;
   }
 
   setup() {
     console.clear();
 
-    const inner_width = this.width * (1 - this._border);
+    const inner_size = this.width * (1 - this._border);
     const inner_border = this._border * this.width;
 
-    const scl = inner_width / this._cols;
+    const scl = inner_size / this._cols;
     const dpos = inner_border / 2;
 
-
+    // create tiles
     this._tiles = [];
     for (let x = 0; x < this._cols; x++) {
       for (let y = 0; y < this._cols; y++) {
@@ -52,6 +53,10 @@ class Sketch extends Engine {
         this._tiles.push(new_tile);
       }
     }
+
+    // create particles to add some "old" texture
+    this._particles = [];
+    for (let i = 0; i < this._particles_number; i++) this._particles.push(new Particle(this.width));
   }
 
   draw() {
@@ -64,7 +69,8 @@ class Sketch extends Engine {
 
     // draw tiles
     this._tiles.forEach(t => t.show(this.ctx));
-
+    // draw particles
+    this._particles.forEach(p => p.show(this._ctx));
     this.noLoop();
   }
 

@@ -54,6 +54,7 @@ class Tile {
     if (this._mode == 0) {
       // two arches (side by side)
       const rho = this._scl / 2;
+
       ctx.save();
       for (let i = 0; i < 2; i++) {
         ctx.fillStyle = this._palette[i];
@@ -66,6 +67,7 @@ class Tile {
     } else if (this._mode == 1) {
       // two arches (superimposed)
       const rho = this._scl / 2;
+
       ctx.save();
       for (let i = 0; i < 2; i++) {
         ctx.fillStyle = this._palette[i];
@@ -79,6 +81,7 @@ class Tile {
       // two rects (side by side)
       const width = this._scl / 2;
       const height = this._scl;
+
       ctx.save();
       ctx.translate(-this._scl / 2, -this._scl / 2);
       for (let i = 0; i < 2; i++) {
@@ -90,6 +93,7 @@ class Tile {
       // two rects (superimposed)
       const width = this._scl / 2;
       const height = this._scl;
+
       for (let i = 0; i < 2; i++) {
         ctx.save();
         ctx.rotate(Math.PI / 2 * i);
@@ -101,6 +105,7 @@ class Tile {
     } else if (this._mode == 4) {
       // one circle in the middle
       const rho = this._scl / 4;
+
       ctx.save();
       ctx.beginPath();
       ctx.fillStyle = this._palette[0];
@@ -110,6 +115,7 @@ class Tile {
     } else if (this._mode == 5) {
       // two circles
       const rho = this._scl / 8;
+
       ctx.save();
       ctx.rotate(Math.PI / 4);
       for (let i = 0; i < 2; i++) {
@@ -168,6 +174,7 @@ class Tile {
       const items = 4;
       const height = this._scl / (items * 2);
       const width = this._scl / 2;
+
       ctx.save();
       ctx.translate(-this._scl / 2, - this._scl / 2);
       for (let i = 0; i < 2; i++) {
