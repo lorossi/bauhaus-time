@@ -1,14 +1,14 @@
 class Sketch extends Engine {
   preload() {
     // parameters
-    this._cols = 8;
+    this._cols = 5;
     this._border = 0.2;
     this._background_color = "hsl(35, 49%, 86%)";
     this._palette = [
       { color: "hsl(209, 99%, 34%)", bias: 8, }, // blue
       { color: "hsl(44, 89%, 57%)", bias: 5, }, // yellow
       { color: "hsl(358, 86%, 52%)", bias: 8, }, // red
-      { color: "hsl(340, 9%, 13%)", bias: 1, } // black
+      { color: "hsl(340, 9%, 13%)", bias: 2, } // black
     ];
     this._particles_number = 20000;
     // setup download button

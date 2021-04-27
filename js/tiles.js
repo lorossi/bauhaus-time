@@ -26,7 +26,7 @@ class Tile {
       { bias: 4, }, // 10 rectangle with holes
       { bias: 4, }, // 11 circles grid
       { bias: 10, }, // 12 angular triangle
-      { bias: 20, }, // EMPTY
+      { bias: 30 }, // EMPTY
     ];
     for (let i = 0; i < this._biases.length; i++) this._biases[i].mode = i;
 
@@ -46,11 +46,13 @@ class Tile {
 
   show(ctx) {
     ctx.save();
-    // TODO translate so position is relative to top left corner
-    ctx.translate(this._x + this._scl / 2, this._y + this._scl / 2);
-    // translate to account for border
-    ctx.translate(this._border_dpos, this._border_dpos);
+    // translate so position is relative to top left corner
+    ctx.translate(this._x + this._border_dpos, this._y + this._border_dpos);
+    // rotate
+    ctx.translate(this._scl / 2, this._scl / 2);
     ctx.rotate(this._rotation);
+    ctx.translate(-this._scl / 2, -this._scl / 2);
+
     ctx.strokeStyle = this._background_color;
 
     if (this._mode == 0) {
@@ -58,6 +60,7 @@ class Tile {
       const rho = this._scl / 2;
 
       ctx.save();
+      ctx.translate(this._scl / 2, this._scl / 2);
       for (let i = 0; i < 2; i++) {
         ctx.fillStyle = this._palette[i];
         ctx.rotate(Math.PI * i);
@@ -71,6 +74,7 @@ class Tile {
       const rho = this._scl / 2;
 
       ctx.save();
+      ctx.translate(this._scl / 2, this._scl / 2);
       for (let i = 0; i < 2; i++) {
         ctx.fillStyle = this._palette[i];
         ctx.rotate(Math.PI * i / 2);
@@ -85,7 +89,6 @@ class Tile {
       const height = this._scl;
 
       ctx.save();
-      ctx.translate(-this._scl / 2, -this._scl / 2);
       for (let i = 0; i < 2; i++) {
         ctx.fillStyle = this._palette[i];
         ctx.fillRect(width * i, 0, width, height);
@@ -98,8 +101,10 @@ class Tile {
 
       for (let i = 0; i < 2; i++) {
         ctx.save();
+        ctx.translate(this._scl / 2, this._scl / 2);
         ctx.rotate(Math.PI / 2 * i);
         ctx.translate(-this._scl / 2, -this._scl / 2);
+
         ctx.fillStyle = this._palette[i];
         ctx.fillRect(0, 0, width, height);
         ctx.restore();
@@ -109,6 +114,7 @@ class Tile {
       const rho = this._scl / 4;
 
       ctx.save();
+      ctx.translate(this._scl / 2, this._scl / 2);
       ctx.beginPath();
       ctx.fillStyle = this._palette[0];
       ctx.arc(0, 0, rho, 0, Math.PI * 2);
@@ -119,6 +125,7 @@ class Tile {
       const rho = this._scl / 8;
 
       ctx.save();
+      ctx.translate(this._scl / 2, this._scl / 2);
       ctx.rotate(Math.PI / 4);
       for (let i = 0; i < 2; i++) {
         ctx.save();
@@ -133,27 +140,32 @@ class Tile {
       ctx.restore();
     } else if (this._mode == 6) {
       // triangle
+      const height = this._scl;
+
       ctx.save();
-      ctx.translate(-this._scl / 2, -this._scl / 2);
       ctx.fillStyle = this._palette[0];
       ctx.beginPath();
       ctx.moveTo(0, 0);
-      ctx.lineTo(this._scl / 2, this._scl / 2);
-      ctx.lineTo(this._scl, 0);
+      ctx.lineTo(height / 2, height);
+      ctx.lineTo(height, 0);
       ctx.fill();
       ctx.restore();
     } else if (this._mode == 7) {
       // two triangles with touching tops
+      const height = this._scl / 2;
+
       ctx.save();
       for (let i = 0; i < 2; i++) {
         ctx.save();
+        ctx.translate(this._scl / 2, this._scl / 2);
         ctx.rotate(Math.PI * i);
         ctx.translate(-this._scl / 2, -this._scl / 2);
+
         ctx.fillStyle = this._palette[i];
         ctx.beginPath();
         ctx.moveTo(0, 0);
-        ctx.lineTo(this._scl / 2, this._scl / 2);
-        ctx.lineTo(this._scl, 0);
+        ctx.lineTo(height, height);
+        ctx.lineTo(height * 2, 0);
         ctx.fill();
         ctx.restore();
       }
@@ -165,8 +177,10 @@ class Tile {
       ctx.save();
       for (let i = 0; i < 2; i++) {
         ctx.save();
+        ctx.translate(this._scl / 2, this._scl / 2);
         ctx.rotate(Math.PI * i);
         ctx.translate(-this._scl / 2, -this._scl / 2);
+
         ctx.fillStyle = this._palette[i];
         ctx.beginPath();
         ctx.moveTo(0, 0);
@@ -183,7 +197,6 @@ class Tile {
       const width = this._scl / 2;
 
       ctx.save();
-      ctx.translate(-this._scl / 2, - this._scl / 2);
       for (let i = 0; i < 2; i++) {
         const dx = width * i;
         const dy = height * i;
@@ -204,7 +217,6 @@ class Tile {
       const rho = scl * 0.25;
 
       ctx.save();
-      ctx.translate(-this._scl / 2, -this._scl / 2);
       ctx.fillStyle = this._palette[0];
       ctx.fillRect(0, 0, this._scl, this._scl);
       ctx.fillStyle = this._background_color;
@@ -224,7 +236,6 @@ class Tile {
       const rho = scl * 0.25;
 
       ctx.save();
-      ctx.translate(-this._scl / 2, -this._scl / 2);
       ctx.fillStyle = this._palette[0];
       ctx.translate(scl / 2, scl / 2);
       for (let x = 0; x < circles; x++) {
@@ -239,7 +250,6 @@ class Tile {
       // angular triangle
       const height = this._scl;
       ctx.save();
-      ctx.translate(-this._scl / 2, -this._scl / 2);
       ctx.fillStyle = this._palette[0];
       ctx.beginPath();
       ctx.moveTo(0, 0);
