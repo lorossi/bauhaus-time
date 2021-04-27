@@ -25,7 +25,7 @@ class Tile {
       { bias: 10, }, // 9 alternating lines
       { bias: 4, }, // 10 rectangle with holes
       { bias: 4, }, // 11 circles grid
-      { bias: 50, }, // EMPTY
+      { bias: 30, }, // EMPTY
     ];
     for (let i = 0; i < this._biases.length; i++) this._biases[i].mode = i;
 
