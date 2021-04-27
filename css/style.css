@@ -1,0 +1,35 @@
+body *, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#sketch {
+  height: 95vh;
+  width: 95vh;
+
+  touch-action: none;
+}
+
+.footer {
+  position: absolute;
+  width: 100vw;
+
+  bottom: 1vh;
+}
+
+@media only screen and (max-width: 600px) {
+  #sketch {
+    height: 95vw;
+    width: 95vw;
+  }
+}
