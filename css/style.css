@@ -1,7 +1,22 @@
+@font-face {
+  font-family: Bauhaus;
+  src: url(Bauhaus-Regular.ttf);  
+}
+
 body *, body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  font-family: Bauhaus;
+  user-select: none;
+}
+
+.pc {
+  display: inline;
+}
+
+.mobile {
+  display: none;
 }
 
 .container {
@@ -14,22 +29,72 @@ body *, body {
 }
 
 #sketch {
-  height: 95vh;
-  width: 95vh;
+  height: 85vh;
+  width: 85vh;
 
   touch-action: none;
 }
 
-.footer {
-  position: absolute;
+.credits {
+  font-size: 1.5rem;
   width: 100vw;
-
+  position: absolute;
   bottom: 1vh;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 
-@media only screen and (max-width: 600px) {
+.instructions {
+  position: absolute;
+  font-size: 1.5rem;
+  width: 100vw;
+  text-align: center;
+  top: 1vh;
+  color:hsl(358, 86%, 52%);
+}
+
+.credits * {
+  padding-right: 1rem;
+}
+
+#download {
+  color: hsl(358, 86%, 52%);
+  text-decoration: none;
+  cursor: pointer;
+
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+  border: 1px solid hsl(358, 86%, 52%);
+  border-radius: 2px;
+}
+
+@media only screen and (max-width: 480px) {
+  .credits {
+    justify-content: center;
+    font-size: 0.8rem;
+    bottom: 5vh;
+  }
+
+  .instructions {
+    font-size: 2rem;
+    top: 10vh;
+  }
+
+  .mobile {
+    display: inline;
+  }
+
+  .pc {
+    display: none;
+  }
+
   #sketch {
-    height: 95vw;
     width: 95vw;
+    height: 95vw;
   }
 }
