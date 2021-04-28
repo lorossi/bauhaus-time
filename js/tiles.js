@@ -6,29 +6,28 @@ class Tile {
     this._palette = [...palette];
     this._background_color = background_color;
 
-    this._border = 0.05;
+    this._border = 0.2;
     this._scl = scl * (1 - this._border);
     this._border_dpos = this._border * scl / 2;
 
     this._rotation = random_int(4) * Math.PI / 2;
 
     this._biases = [
-      { bias: 16, }, // 0 two arches (side by side)
-      { bias: 16, }, // 1 two arches (superimposed)
-      { bias: 15, }, // 2 two rects (side by side)
-      { bias: 10, }, // 3 two rects (superimposed)
-      { bias: 5, }, // 4 one circle in the middle
-      { bias: 5, }, // 5 two circles
-      { bias: 10, }, // 6 triangle
-      { bias: 15, }, // 7 two triangles with touching tops
-      { bias: 15, }, // 8 diagonally separated colors
-      { bias: 10, }, // 9 alternating lines
-      { bias: 4, }, // 10 rectangle with holes
-      { bias: 4, }, // 11 circles grid
-      { bias: 10, }, // 12 angular triangle
-      { bias: 30 }, // EMPTY
+      { bias: 16, mode: "TWO_ARCHES", }, // 0 two arches (side by side)
+      { bias: 16, mode: "TWO_SUPERIMPOSED_ARCHES", }, // 1 two arches (superimposed)
+      { bias: 15, mode: "TWO_RECTS", }, // 2 two rects (side by side)
+      { bias: 10, mode: "TWO_SUPERIMPOSED_RECTS", }, // 3 two rects (superimposed)
+      { bias: 5, mode: "CIRCLE", }, // 4 one circle in the middle
+      { bias: 5, mode: "TWO_CIRCLES", }, // 5 two circles
+      { bias: 10, mode: "TRIANGLE" }, // 6 triangle
+      { bias: 15, mode: "TWO_TRIANGLES", }, // 7 two triangles with touching tops
+      { bias: 15, mode: "DIAGONAL", }, // 8 diagonally separated colors
+      { bias: 10, mode: "ALTERNATING", }, // 9 alternating lines
+      { bias: 4, mode: "RECTANGLE_WITH_HOLES", }, // 10 rectangle with holes
+      { bias: 4, mode: "CIRCLES_GRID", }, // 11 circles grid
+      { bias: 10, mode: "ANGULAR_TRIANGLE", }, // 12 angular triangle
+      { bias: 30, mode: "EMPTY" }, // EMPTY
     ];
-    for (let i = 0; i < this._biases.length; i++) this._biases[i].mode = i;
 
     this._biases = normalize_bias(this._biases);
 
@@ -55,7 +54,7 @@ class Tile {
 
     ctx.strokeStyle = this._background_color;
 
-    if (this._mode == 0) {
+    if (this._mode == "TWO_ARCHES") {
       // two arches (side by side)
       const rho = this._scl / 2;
 
@@ -69,7 +68,7 @@ class Tile {
         ctx.fill();
       }
       ctx.restore();
-    } else if (this._mode == 1) {
+    } else if (this._mode == "TWO_SUPERIMPOSED_ARCHES") {
       // two arches (superimposed)
       const rho = this._scl / 2;
 
@@ -83,7 +82,7 @@ class Tile {
         ctx.fill();
       }
       ctx.restore();
-    } else if (this._mode == 2) {
+    } else if (this._mode == "TWO_RECTS") {
       // two rects (side by side)
       const width = this._scl / 2;
       const height = this._scl;
@@ -94,7 +93,7 @@ class Tile {
         ctx.fillRect(width * i, 0, width, height);
       }
       ctx.restore();
-    } else if (this._mode == 3) {
+    } else if (this._mode == "TWO_SUPERIMPOSED_RECTS") {
       // two rects (superimposed)
       const width = this._scl / 2;
       const height = this._scl;
@@ -109,7 +108,7 @@ class Tile {
         ctx.fillRect(0, 0, width, height);
         ctx.restore();
       }
-    } else if (this._mode == 4) {
+    } else if (this._mode == "CIRCLE") {
       // one circle in the middle
       const rho = this._scl / 4;
 
@@ -120,7 +119,7 @@ class Tile {
       ctx.arc(0, 0, rho, 0, Math.PI * 2);
       ctx.fill();
       ctx.restore();
-    } else if (this._mode == 5) {
+    } else if (this._mode == "TWO_CIRCLES") {
       // two circles
       const rho = this._scl / 8;
 
@@ -138,7 +137,7 @@ class Tile {
         ctx.restore();
       }
       ctx.restore();
-    } else if (this._mode == 6) {
+    } else if (this._mode == "TRIANGLE") {
       // triangle
       const height = this._scl;
 
@@ -150,7 +149,7 @@ class Tile {
       ctx.lineTo(height, 0);
       ctx.fill();
       ctx.restore();
-    } else if (this._mode == 7) {
+    } else if (this._mode == "TWO_TRIANGLES") {
       // two triangles with touching tops
       const height = this._scl / 2;
 
@@ -170,7 +169,7 @@ class Tile {
         ctx.restore();
       }
       ctx.restore();
-    } else if (this._mode == 8) {
+    } else if (this._mode == "DIAGONAL") {
       // diagonally separated colors
       const height = this._scl;
 
@@ -190,7 +189,7 @@ class Tile {
         ctx.restore();
       }
       ctx.restore();
-    } else if (this._mode == 9) {
+    } else if (this._mode == "ALTERNATING") {
       // alternating lines
       const items = 4;
       const height = this._scl / (items * 2);
@@ -210,7 +209,7 @@ class Tile {
         ctx.restore();
       }
       ctx.restore();
-    } else if (this._mode == 10) {
+    } else if (this._mode == "RECTANGLE_WITH_HOLES") {
       // rectangle with holes
       const holes = 4;
       const scl = this._scl / holes;
@@ -229,7 +228,7 @@ class Tile {
         }
       }
       ctx.restore();
-    } else if (this._mode == 11) {
+    } else if (this._mode == "CIRCLES_GRID") {
       // circles grid
       const circles = 3;
       const scl = this._scl / circles;
@@ -246,7 +245,7 @@ class Tile {
         }
       }
       ctx.restore();
-    } else if (this._mode == 12) {
+    } else if (this._mode == "ANGULAR_TRIANGLE") {
       // angular triangle
       const height = this._scl;
       ctx.save();

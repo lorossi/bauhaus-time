@@ -3,8 +3,8 @@ class Particle {
     this._x = random_int(size);
     this._y = random_int(size);
 
-    this._alpha = random(2, 6) / 100;
-    this._channel = random(80, 120);
+    this._alpha = random(1, 6) / 100;
+    this._channel = random(20, 60);
     this._scl = 3;
   }
 
