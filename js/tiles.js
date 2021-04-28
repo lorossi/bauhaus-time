@@ -15,17 +15,22 @@ class Tile {
     this._modes = [
       { bias: 15, mode: "TWO_ARCHES", }, // 0 two arches (side by side)
       { bias: 15, mode: "TWO_SUPERIMPOSED_ARCHES", }, // 1 two arches (superimposed)
-      { bias: 8, mode: "TWO_RECTS", }, // 2 two rects (side by side)
+      { bias: 5, mode: "TWO_RECTS", }, // 2 two rects (side by side)
       { bias: 10, mode: "TWO_SUPERIMPOSED_RECTS", }, // 3 two rects (superimposed)
       { bias: 10, mode: "CIRCLE", }, // 4 one circle in the middle
-      { bias: 8, mode: "TWO_CIRCLES", }, // 5 two circles
+      { bias: 10, mode: "TWO_CIRCLES", }, // 5 two circles
       { bias: 10, mode: "TRIANGLE" }, // 6 triangle
       { bias: 15, mode: "TWO_TRIANGLES", }, // 7 two triangles with touching tops
-      { bias: 8, mode: "DIAGONAL", }, // 8 diagonally separated colors
+      { bias: 5, mode: "DIAGONAL", }, // 8 diagonally separated colors
       { bias: 5, mode: "ALTERNATING", }, // 9 alternating lines
-      { bias: 4, mode: "RECTANGLE_WITH_HOLES", }, // 10 rectangle with holes
-      { bias: 4, mode: "CIRCLES_GRID", }, // 11 circles grid
-      { bias: 10, mode: "ANGULAR_TRIANGLE", }, // 12 angular triangle
+      { bias: 3, mode: "RECTANGLE_WITH_HOLES", }, // 10 rectangle with holes
+      { bias: 3, mode: "CIRCLES_GRID", }, // 11 circles grid
+      { bias: 5, mode: "ANGULAR_TRIANGLE", }, // 12 angular triangle
+      { bias: 5, mode: "HOLLOW_CIRCLE", }, // 13 hollow circle
+      { bias: 5, mode: "HOLLOW_SQUARE", }, // 14 hollow square
+      { bias: 10, mode: "PLUS", }, // 15 plus sign
+      { bias: 10, mode: "SQUARE", }, // 16 square
+      { bias: 5, mode: "QUARTER_ARCH", }, // 17 quarter arch
       { bias: 75, mode: "EMPTY" }, // EMPTY
     ];
 
@@ -40,7 +45,7 @@ class Tile {
     }
 
     //this._rotation = 0;
-    //this._mode = 12;
+    //this._mode = "QUARTER_ARCH";
   }
 
   show(ctx) {
@@ -254,6 +259,77 @@ class Tile {
       ctx.moveTo(0, 0);
       ctx.lineTo(height, height);
       ctx.lineTo(0, height);
+      ctx.fill();
+      ctx.restore();
+    } else if (this._mode == "HOLLOW_CIRCLE") {
+      // hollow circle
+      const rho = this._scl / 2;
+      const weight = this._scl / 2 * 0.5;
+
+      ctx.save();
+      ctx.translate(this._scl / 2, this._scl / 2);
+
+      ctx.fillStyle = this._palette[0];
+      ctx.beginPath();
+      ctx.arc(0, 0, rho, 0, 2 * Math.PI);
+      ctx.fill();
+
+      ctx.fillStyle = this._background_color;
+      ctx.beginPath();
+      ctx.arc(0, 0, weight, 0, 2 * Math.PI);
+      ctx.fill();
+
+      ctx.restore();
+    } else if (this._mode == "HOLLOW_SQUARE") {
+      // hollow square
+      const side = this._scl;
+      const weight = this._scl / 2 * 0.9;
+
+      ctx.save();
+      ctx.translate(this._scl / 2, this._scl / 2);
+
+      ctx.fillStyle = this._palette[0];
+      ctx.fillRect(-side / 2, -side / 2, side, side);
+
+      ctx.fillStyle = this._background_color;
+      ctx.fillRect(-weight / 2, -weight / 2, weight, weight);
+
+      ctx.restore();
+    } else if (this._mode == "PLUS") {
+      // plus sign
+      const height = this._scl;
+      const width = this._scl / 4;
+
+      ctx.save();
+      ctx.translate(this._scl / 2, this._scl / 2);
+
+      ctx.fillStyle = this._palette[0];
+      ctx.fillRect(-width / 2, -height / 2, width, height);
+
+      ctx.rotate(Math.PI / 2);
+      ctx.fillRect(-width / 2, -height / 2, width, height);
+
+      ctx.restore();
+
+    } else if (this._mode == "SQUARE") {
+      // square 
+      const side = this._scl * 0.75;
+
+      ctx.save();
+      ctx.translate(this._scl / 2, this._scl / 2);
+      ctx.fillStyle = this._palette[0];
+      ctx.fillRect(-side / 2, -side / 2, side, side);
+      ctx.restore();
+    } else if (this._mode == "QUARTER_ARCH") {
+      // arch on the side
+      const rho = this._scl;
+
+      ctx.save();
+      ctx.fillStyle = this._palette[0];
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.arc(0, 0, rho, 0, Math.PI / 2);
+      ctx.lineTo(0, 0);
       ctx.fill();
       ctx.restore();
     }
