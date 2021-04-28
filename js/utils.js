@@ -26,3 +26,9 @@ const shuffle_array = (arr) => {
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
 };
+
+const wrap = (x, min_val = 0, max_val = 1) => {
+  while (x > max_val) x -= max_val - min_val;
+  while (x < min_val) x += max_val - min_val;
+  return x;
+};

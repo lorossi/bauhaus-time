@@ -1,16 +1,17 @@
 class Sketch extends Engine {
   preload() {
     // parameters
-    this._cols = 3;
+    this._cols = 9;
     this._border = 0.1;
     this._background_color = "hsl(35, 49%, 86%)";
     this._palette = [
-      { color: "hsl(209, 99%, 34%)", bias: 8, }, // blue
-      { color: "hsl(44, 89%, 57%)", bias: 5, }, // yellow
-      { color: "hsl(358, 86%, 52%)", bias: 8, }, // red
-      { color: "hsl(340, 9%, 13%)", bias: 1, } // black
+      { color: new Color(209, 99, 34), bias: 8, }, // blue
+      { color: new Color(44, 89, 57), bias: 5, }, // yellow
+      { color: new Color(358, 86, 52), bias: 8, }, // red
+      { color: new Color(340, 9, 13), bias: 1, } // black
     ];
-    this._particles_number = 10000;
+    this._particles_number = 10000; // texture particles
+    this._max_variation = 2; // hue variation
     // setup download button
     document.querySelector("#download").addEventListener("click", () => this._download());
   }
@@ -24,6 +25,10 @@ class Sketch extends Engine {
     // size and displacement calculations
     const scl = inner_size / this._cols;
     const dpos = inner_border / 2;
+
+    // color variation
+    const hue_variation = random_interval(0, this._max_variation);
+    this._palette.forEach(c => c.color.variate(hue_variation));
 
     // create tiles
     this._tiles = [];
@@ -45,7 +50,8 @@ class Sketch extends Engine {
               // if the bias is bigger that the choice, this is the 
               // color we are looking for. remove it from palette 
               // and repeat.
-              tile_palette.push(palette.splice(j, 1)[0].color);
+              const new_color = palette.splice(j, 1)[0].color;
+              tile_palette.push(new_color.HSL);
               break;
             }
           }
