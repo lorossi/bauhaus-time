@@ -8,10 +8,10 @@ class Sketch extends Engine {
       { color: new Color(209, 99, 34), bias: 8, }, // blue
       { color: new Color(44, 89, 57), bias: 5, }, // yellow
       { color: new Color(358, 86, 52), bias: 8, }, // red
-      { color: new Color(340, 9, 13), bias: 1, } // black
+      { color: new Color(340, 9, 13), bias: 0.75, } // black
     ];
     this._particles_number = 10000; // texture particles
-    this._max_variation = 2; // hue variation
+    this._max_variation = 1; // hue variation
     // setup download button
     document.querySelector("#download").addEventListener("click", () => this._download());
   }

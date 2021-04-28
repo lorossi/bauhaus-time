@@ -15,18 +15,18 @@ class Tile {
     this._modes = [
       { bias: 15, mode: "TWO_ARCHES", }, // 0 two arches (side by side)
       { bias: 15, mode: "TWO_SUPERIMPOSED_ARCHES", }, // 1 two arches (superimposed)
-      { bias: 15, mode: "TWO_RECTS", }, // 2 two rects (side by side)
+      { bias: 8, mode: "TWO_RECTS", }, // 2 two rects (side by side)
       { bias: 10, mode: "TWO_SUPERIMPOSED_RECTS", }, // 3 two rects (superimposed)
       { bias: 10, mode: "CIRCLE", }, // 4 one circle in the middle
       { bias: 8, mode: "TWO_CIRCLES", }, // 5 two circles
       { bias: 10, mode: "TRIANGLE" }, // 6 triangle
       { bias: 15, mode: "TWO_TRIANGLES", }, // 7 two triangles with touching tops
-      { bias: 15, mode: "DIAGONAL", }, // 8 diagonally separated colors
+      { bias: 8, mode: "DIAGONAL", }, // 8 diagonally separated colors
       { bias: 5, mode: "ALTERNATING", }, // 9 alternating lines
       { bias: 4, mode: "RECTANGLE_WITH_HOLES", }, // 10 rectangle with holes
       { bias: 4, mode: "CIRCLES_GRID", }, // 11 circles grid
       { bias: 10, mode: "ANGULAR_TRIANGLE", }, // 12 angular triangle
-      { bias: 30, mode: "EMPTY" }, // EMPTY
+      { bias: 75, mode: "EMPTY" }, // EMPTY
     ];
 
     this._modes = normalize_bias(this._modes);
