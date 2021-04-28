@@ -12,7 +12,7 @@ class Tile {
 
     this._rotation = random_int(4) * Math.PI / 2;
 
-    this._biases = [
+    this._modes = [
       { bias: 16, mode: "TWO_ARCHES", }, // 0 two arches (side by side)
       { bias: 16, mode: "TWO_SUPERIMPOSED_ARCHES", }, // 1 two arches (superimposed)
       { bias: 15, mode: "TWO_RECTS", }, // 2 two rects (side by side)
@@ -29,12 +29,12 @@ class Tile {
       { bias: 30, mode: "EMPTY" }, // EMPTY
     ];
 
-    this._biases = normalize_bias(this._biases);
+    this._modes = normalize_bias(this._modes);
 
     const choiche = random();
-    for (let i = 0; i < this._biases.length; i++) {
-      if (this._biases[i].cumulative > choiche) {
-        this._mode = this._biases[i].mode;
+    for (let i = 0; i < this._modes.length; i++) {
+      if (this._modes[i].cumulative > choiche) {
+        this._mode = this._modes[i].mode;
         break;
       }
     }
