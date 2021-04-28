@@ -10,7 +10,8 @@ class Tile {
     this._scl = scl * (1 - this._border);
     this._border_dpos = this._border * scl / 2;
 
-    this._rotation = random_int(4) * Math.PI / 2;
+    // random rotation with some small offset (emulates hand imprecision)
+    this._rotation = random_int(4) * Math.PI / 2 + random_normal(-0.0025, 0.0025);
 
     this._modes = [
       { bias: 15, mode: "TWO_ARCHES", }, // 0 two arches (side by side)

@@ -1,9 +1,10 @@
 class Sketch extends Engine {
   preload() {
     // parameters
-    this._cols = 9;
-    this._border = 0.1;
-    this._background_color = "hsl(35, 49%, 86%)";
+    this._min_cols = 3;
+    this._max_cols = 12;
+    this._border = 0.15;
+    this._background_color = new Color(35, 49, 86);
     this._palette = [
       { color: new Color(209, 99, 34), bias: 8, }, // blue
       { color: new Color(44, 89, 57), bias: 5, }, // yellow
@@ -21,6 +22,9 @@ class Sketch extends Engine {
   setup() {
     console.clear();
 
+    // pick number of cols
+    this._cols = random_int(this._min_cols, this._max_cols);
+    console.log(this._cols);
     // border calculations
     const inner_size = this.width * (1 - this._border);
     const inner_border = this._border * this.width;
@@ -60,7 +64,7 @@ class Sketch extends Engine {
         }
 
         // create and append new tile to array
-        const new_tile = new Tile(x * scl + dpos, y * scl + dpos, scl, tile_palette, this._background_color);
+        const new_tile = new Tile(x * scl + dpos, y * scl + dpos, scl, tile_palette, this._background_color.HSL);
         this._tiles.push(new_tile);
       }
     }
@@ -77,7 +81,7 @@ class Sketch extends Engine {
     // background
     this.ctx.save();
     this.ctx.clearRect(0, 0, this.width, this.height);
-    this.ctx.fillStyle = this._background_color;
+    this.ctx.fillStyle = this._background_color.HSL;
     this.ctx.fillRect(0, 0, this.width, this.height);
     this.ctx.restore();
 
