@@ -10,8 +10,10 @@ class Sketch extends Engine {
       { color: new Color(358, 86, 52), bias: 8, }, // red
       { color: new Color(340, 9, 13), bias: 0.75, } // black
     ];
-    this._particles_number = 10000; // texture particles
-    this._max_variation = 1; // hue variation
+    this._particles_number = 12000; // texture particles
+
+    // max color variation
+    this._max_variation = 5;
     // setup download button
     document.querySelector("#download").addEventListener("click", () => this._download());
   }
@@ -26,9 +28,9 @@ class Sketch extends Engine {
     const scl = inner_size / this._cols;
     const dpos = inner_border / 2;
 
-    // color variation
+    // hue variation
     const hue_variation = random_interval(0, this._max_variation);
-    this._palette.forEach(c => c.color.variate(hue_variation));
+    this._palette.forEach(p => p.color.variation = hue_variation);
 
     // create tiles
     this._tiles = [];

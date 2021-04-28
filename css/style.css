@@ -1,3 +1,7 @@
+:root {
+  --red: hsl(358, 86%, 52%);
+}
+
 @font-face {
   font-family: Bauhaus;
   src: url(Bauhaus-Regular.ttf);  
@@ -32,6 +36,9 @@ body *, body {
   height: 85vh;
   width: 85vh;
 
+  min-width: 0;
+  min-height: 0;
+  
   touch-action: none;
 }
 
@@ -47,21 +54,18 @@ body *, body {
   align-items: center;
 }
 
+
 .instructions {
   position: absolute;
   font-size: 1.5rem;
   width: 100vw;
   text-align: center;
   top: 1vh;
-  color:hsl(358, 86%, 52%);
-}
-
-.credits * {
-  padding-right: 1rem;
+  color: var(--red);
 }
 
 #download {
-  color: hsl(358, 86%, 52%);
+  color: var(--red);
   text-decoration: none;
   cursor: pointer;
 
@@ -69,14 +73,13 @@ body *, body {
   padding-right: 0.25rem;
   padding-top: 0.125rem;
   padding-bottom: 0.125rem;
-  border: 1px solid hsl(358, 86%, 52%);
+  border: 1px solid var(--red);
   border-radius: 2px;
 }
 
 @media only screen and (max-width: 480px) {
   .credits {
-    justify-content: center;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     bottom: 5vh;
   }
 
