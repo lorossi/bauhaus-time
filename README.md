@@ -1,10 +1,22 @@
-# Empty HTML5 Canvas Project
+# Bauhaus time!
 
-I got bored of creating a new document every time.
+BAUHAUS! BAUHAUS! BAUHAUS!
 
-Contains all the needed files to create a new HTML5 page with a JS canvas inside.
+B A U H A U S
 
-Just clone the repo or download the last release.
+A
+
+U
+
+H
+
+A
+
+U
+
+S
+
+## Try it here [lorenzoros.si/bauhaus-time](https://lorenzoros.si/bauhaus-time/)
 
 ## Credits
 
