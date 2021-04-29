@@ -4,7 +4,7 @@ class Particle {
     this._y = random_int(size);
 
     this._alpha = random(1, 6) / 100;
-    this._channel = random_interval(80, 20);
+    this._channel = random_interval(100, 20);
     this._scl = 3;
   }
 

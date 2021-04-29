@@ -3,7 +3,7 @@ class Sketch extends Engine {
     // parameters
     this._min_cols = 3;
     this._max_cols = 12;
-    this._border = 0.15;
+    this._border = 0.2;
     this._background_color = new Color(35, 49, 86);
     this._palette = [
       { color: new Color(209, 99, 34), bias: 8, }, // blue
@@ -11,7 +11,7 @@ class Sketch extends Engine {
       { color: new Color(358, 86, 52), bias: 8, }, // red
       { color: new Color(340, 9, 13), bias: 0.75, } // black
     ];
-    this._particles_number = 12000; // texture particles
+    this._particles_number = 15000; // texture particles
 
     // max color variation
     this._max_variation = 5;
@@ -24,7 +24,6 @@ class Sketch extends Engine {
 
     // pick number of cols
     this._cols = random_int(this._min_cols, this._max_cols);
-    console.log(this._cols);
     // border calculations
     const inner_size = this.width * (1 - this._border);
     const inner_border = this._border * this.width;
@@ -73,7 +72,8 @@ class Sketch extends Engine {
     this._particles = [];
     for (let i = 0; i < this._particles_number; i++) this._particles.push(new Particle(this.width));
 
-    // create signature
+    // create signature and title
+    this._title = new Title(this.width);
     this._signature = new Signature(this.width);
   }
 
@@ -89,6 +89,8 @@ class Sketch extends Engine {
     this._tiles.forEach(t => t.show(this.ctx));
     // draw particles
     this._particles.forEach(p => p.show(this._ctx));
+    // draw title
+    this._title.show(this.ctx);
     // draw signature
     this._signature.show(this.ctx);
 
@@ -102,7 +104,7 @@ class Sketch extends Engine {
   }
 
   _download() {
-    this.saveAsImage("bauhaus-time!");
+    this.saveAsImage("Bauhaus-" + this._title.piece_title);
   }
 }
 
