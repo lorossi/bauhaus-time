@@ -2,7 +2,7 @@ class Sketch extends Engine {
   preload() {
     // parameters
     this._min_cols = 3;
-    this._max_cols = 12;
+    this._max_cols = 9;
     this._border = 0.2;
     // there was no need to create a color class, but I did. Fight me.
     this._background_color = new Color(35, 49, 86);
