@@ -11,7 +11,7 @@ class Sketch extends Engine {
       { color: new Color(358, 86, 52), bias: 8, }, // red
       { color: new Color(340, 9, 13), bias: 0.75, } // black
     ];
-    this._particles_number = 15000; // texture particles
+    this._particles_number = 10000; // texture particles
 
     // max color variation
     this._max_variation = 5;

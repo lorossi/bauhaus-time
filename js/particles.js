@@ -3,9 +3,9 @@ class Particle {
     this._x = random_int(size);
     this._y = random_int(size);
 
-    this._alpha = random(1, 6) / 100;
-    this._channel = random_interval(100, 20);
-    this._scl = 3;
+    this._alpha = random(2, 6) / 100;
+    this._channel = random_interval(80, 20);
+    this._scl = 2;
   }
 
   show(ctx) {
