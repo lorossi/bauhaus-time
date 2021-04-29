@@ -4,6 +4,7 @@ class Sketch extends Engine {
     this._min_cols = 3;
     this._max_cols = 12;
     this._border = 0.2;
+    // there was no need to create a color class, but I did. Fight me.
     this._background_color = new Color(35, 49, 86);
     this._palette = [
       { color: new Color(209, 99, 34), bias: 8, }, // blue
@@ -16,7 +17,7 @@ class Sketch extends Engine {
     // max color variation
     this._max_variation = 5;
     // setup download button
-    document.querySelector("#download").addEventListener("click", () => this._download());
+    document.querySelector("#download").addEventListener("click", () => this.saveAsImage("Bauhaus-" + this._title.piece_title));
   }
 
   setup() {
@@ -30,8 +31,7 @@ class Sketch extends Engine {
     // size and displacement calculations
     const scl = inner_size / this._cols;
     const dpos = inner_border / 2;
-
-    // hue variation
+    // hue variation - gives a little bit of randomness
     const hue_variation = random_interval(0, this._max_variation);
     this._palette.forEach(p => p.color.variation = hue_variation);
 
@@ -99,12 +99,10 @@ class Sketch extends Engine {
   }
 
   click() {
+    // reset drawing
     this.setup();
+    // loop again (since it's stopped at the end of the drawing, it will only render one frame)
     this.loop();
-  }
-
-  _download() {
-    this.saveAsImage("Bauhaus-" + this._title.piece_title);
   }
 }
 

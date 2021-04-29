@@ -1,16 +1,16 @@
 class Color {
-  constructor(H, S, L, A = 1) {
+  constructor(H, S, L) {
     this._H = H;
     this._S = S;
     this._L = L;
-    this._A = A;
+
 
     this._variation = 0;
   }
 
   get HSL() {
     const H = wrap(this._H + this._variation, 0, 360);
-    return `hsl(${this._H}, ${this._S}%, ${this._L}%, ${this._A})`;
+    return `hsl(${H}, ${this._S}%, ${this._L}%, 1)`;
   }
 
   get variation() {

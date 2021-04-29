@@ -35,8 +35,9 @@ class Tile {
       { bias: 75, mode: "EMPTY" }, // EMPTY
     ];
 
+    // normalize the bias in range 0-1
     this._modes = normalize_bias(this._modes);
-
+    // pick a random mode
     const choiche = random();
     for (let i = 0; i < this._modes.length; i++) {
       if (this._modes[i].cumulative > choiche) {
@@ -44,9 +45,6 @@ class Tile {
         break;
       }
     }
-
-    //this._rotation = 0;
-    //this._mode = "QUARTER_ARCH";
   }
 
   show(ctx) {
