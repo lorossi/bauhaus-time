@@ -2,7 +2,7 @@
 
 Sometimes, I get obsessed to something, but just for a week or two. At this point of my life, I call this "my weekly obsession".
 
-This week's lucky winner is *Bauhaus*. I have already used this kind of style in another project, [circle tiling](https://github.com/lorossi/circle-tiling). *But it was not enough.*
+This week's lucky winner is *Bauhaus*. I have already used this kind of style in another project, [circle tiling](https://www.github.com/lorossi/circle-tiling). *But it was not enough.*
 
 I tried to replicate what it was taught in that school, but using my style. I set myself **3 simple rules**:
 
@@ -14,21 +14,30 @@ As I did in other scripts, I then added a bunch of tiny dark particles to give t
 
 Try it as much as you want, it's free! If you like any of the generated image, just press on the button to save it. Forever!
 
+Also, if you are interested, be sure to check my [Instagram profile](https://www.instagram.com/lorossi97) where I post a lot of things that I do.
+
 ## Try it here [lorenzoros.si/bauhaus-time](https://lorenzoros.si/bauhaus-time/)
 
 ## Output
 
 *Bauhaus 3x3*
 ![bauhaus-3x3](output/Bauhaus-3x3.png)
+![bauhaus-3x3-2](output/Bauhaus-3x3-2.png)
 
 *Bauhaus 4x4*
 ![bauhaus-4x4](output/Bauhaus-4x4.png)
+![bauhaus-4x4-2](output/Bauhaus-4x4-2.png)
 
 *Bauhaus 5x5*
 ![bauhaus-5x5](output/Bauhaus-5x5.png)
+![bauhaus-5x5-2](output/Bauhaus-5x5-2.png)
 
 *Bauhaus 6x6*
 ![bauhaus-6x6](output/Bauhaus-6x6.png)
+![bauhaus-6x6-2](output/Bauhaus-6x6-2.png)
+
+*Bauhaus 8x8*
+![bauhaus-8x8](output/Bauhaus-8x8.png)
 
 *Bauhaus 9x9*
 ![bauhaus-9x9](output/Bauhaus-9x9.png)
