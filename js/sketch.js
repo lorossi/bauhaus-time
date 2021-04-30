@@ -15,7 +15,7 @@ class Sketch extends Engine {
     this._particles_number = 10000; // texture particles
 
     // max color variation
-    this._max_variation = 8;
+    this._max_variation = 4;
     // setup download button
     document.querySelector("#download").addEventListener("click", () => this.saveAsImage("Bauhaus-" + this._title.piece_title));
   }

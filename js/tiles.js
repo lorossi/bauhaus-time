@@ -32,7 +32,7 @@ class Tile {
       { bias: 10, mode: "PLUS", }, // 15 plus sign
       { bias: 10, mode: "SQUARE", }, // 16 square
       { bias: 5, mode: "QUARTER_ARCH", }, // 17 quarter arch
-      { bias: 50, mode: "EMPTY" }, // EMPTY
+      { bias: 65, mode: "EMPTY" }, // EMPTY
     ];
 
     // normalize the bias in range 0-1
