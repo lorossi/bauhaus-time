@@ -2,9 +2,11 @@
 
 Sometimes, I get obsessed to something, but just for a week or two. At this point of my life, I call this "my weekly obsession".
 
-This week's lucky winner is *Bauhaus*, the famous (although short lived, sadly) german art movement born in the early 20s. I've always really liked this style (maybe I was influenced as a child? I do recall having a bauhaus themed blanked. Or was it a blanket with a silly joke on Bauhaus? I can't really remember.) In the past, I tried experimenting with this kind of style in another few projects, like [circle tiling](https://www.github.com/lorossi/circle-tiling) and [random mondrian](https://www.github.com/lorossi/random-mondrian).
+This week's lucky winner is *Bauhaus*, the famous (although short lived, sadly) german art movement born in the early 20s. I've always really liked this style (maybe I was influenced as a child? I do recall having a bauhaus themed blanked. Or was it a blanket with a silly joke on Bauhaus¹? I can't really remember.) In the past, I tried experimenting with this kind of style in another few projects, like [circle tiling](https://www.github.com/lorossi/circle-tiling) and [random mondrian](https://www.github.com/lorossi/random-mondrian).
 
- *But it was not enough.* How could that be enough, after all?
+*But it was not enough.* How could that be enough, after all?
+
+Explanation: *¹ In Italian it makes sense, I swear. This doesn't make all this situation less lame, however*
 
 I tried to replicate what it was taught in that school, but using my style. I set myself **3 simple rules**:
 
