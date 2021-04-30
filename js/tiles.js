@@ -24,15 +24,15 @@ class Tile {
       { bias: 15, mode: "TWO_TRIANGLES", }, // 7 two triangles with touching tops
       { bias: 5, mode: "DIAGONAL", }, // 8 diagonally separated colors
       { bias: 5, mode: "ALTERNATING", }, // 9 alternating lines
-      { bias: 3, mode: "RECTANGLE_WITH_HOLES", }, // 10 rectangle with holes
-      { bias: 3, mode: "CIRCLES_GRID", }, // 11 circles grid
+      { bias: 5, mode: "RECTANGLE_WITH_HOLES", }, // 10 rectangle with holes
+      { bias: 5, mode: "CIRCLES_GRID", }, // 11 circles grid
       { bias: 5, mode: "ANGULAR_TRIANGLE", }, // 12 angular triangle
       { bias: 5, mode: "HOLLOW_CIRCLE", }, // 13 hollow circle
       { bias: 5, mode: "HOLLOW_SQUARE", }, // 14 hollow square
       { bias: 10, mode: "PLUS", }, // 15 plus sign
       { bias: 10, mode: "SQUARE", }, // 16 square
       { bias: 5, mode: "QUARTER_ARCH", }, // 17 quarter arch
-      { bias: 75, mode: "EMPTY" }, // EMPTY
+      { bias: 50, mode: "EMPTY" }, // EMPTY
     ];
 
     // normalize the bias in range 0-1
