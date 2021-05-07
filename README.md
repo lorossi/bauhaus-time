@@ -1,5 +1,7 @@
 # Bauhaus time
 
+## Try it here [lorenzoros.si/bauhaus-time](https://lorenzoros.si/bauhaus-time/)
+
 Sometimes, I get obsessed to something, but just for a week or two. At this point of my life, I call this *"my weekly obsession".*
 
 This week's lucky winner is *Bauhaus*, the famous (although short lived, sadly) German art movement born in the early 20s. I've always really liked this style (maybe I was influenced as a child? I do recall having a Bauhaus themed blanket. Or was it a blanket with a silly joke on Bauhaus¹? I can't really remember.) In the past, I tried experimenting with this kind of style in another few projects, like [circle tiling](https://www.github.com/lorossi/circle-tiling) and [random mondrian](https://www.github.com/lorossi/random-mondrian).
@@ -21,8 +23,6 @@ Try it as much as you want, it's free! If you like any of the generated image, j
 Also, if you are interested, be sure to check my [Instagram profile](https://www.instagram.com/lorossi97) where I post a lot of things that I do.
 
 **DISCLAIMER** *I am not a designer, an art student, an artist, or one that has studied anything related to this topic. Please don't be offended by my project. Of course it's not really Bauhaus and I would never claim to be like Kandinskij or Mondrian, just to name a few. But I had fun doing this. Feel free to leave a comment on my Instagram post or here on GitHub thought!*
-
-## Try it here [lorenzoros.si/bauhaus-time](https://lorenzoros.si/bauhaus-time/)
 
 ## Output
 
