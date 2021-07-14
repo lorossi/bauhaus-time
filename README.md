@@ -12,7 +12,7 @@ Explanation: *¹ In Italian it makes sense, I swear. This doesn't make all this 
 
 I tried to replicate what it was taught in that school, but using my style. I set myself **3 simple rules**:
 
-1. **Simple colors** - *red, yellow and black.* Nothing less, nothing more. Each one has a different chanche of coming up on the final image, so you will rarely see black (but if you try enough, eventually you will find it).
+1. **Simple colors** - *red, yellow and black.* Nothing less, nothing more. Each one has a different chance of coming up on the final image, so you will rarely see black (but if you try enough, eventually you will find it).
 1. **Repetitions** - every canvas is made by a grid with a random number of lines and columns, varying between 3 and 9. Each generated tile is occupied by an unique combination of shapes.
 1. **Basic shapes** - each tile is filled by a randomly generated composition with one or two color. The script picks one of 17 random algorithm to fill the allotted space. As it happens with the colors, not every composition has the same probability of being picked. *There's also a not-so-small change of the tile being left empty.*
 
@@ -20,7 +20,7 @@ As I did in other scripts, I then added a bunch of tiny dark particles to give t
 
 Try it as much as you want, it's free! If you like any of the generated image, just press on the button to save it. Forever!
 
-Also, if you are interested, be sure to check my [Instagram profile](https://www.instagram.com/lorossi97) where I post a lot of things that I do.
+Also, if you are interested, be sure to check my [Instagram profile](https://www.instagram.com/p/CRTgy4hsdxd) where I post a lot of things that I do.
 
 **DISCLAIMER** *I am not a designer, an art student, an artist, or one that has studied anything related to this topic. Please don't be offended by my project. Of course it's not really Bauhaus and I would never claim to be like Kandinskij or Mondrian, just to name a few. But I had fun doing this. Feel free to leave a comment on my Instagram post or here on GitHub thought!*
 

@@ -38,9 +38,9 @@ class Tile {
     // normalize the bias in range 0-1
     this._modes = normalize_bias(this._modes);
     // pick a random mode
-    const choiche = random();
+    const choice = random();
     for (let i = 0; i < this._modes.length; i++) {
-      if (this._modes[i].cumulative > choiche) {
+      if (this._modes[i].cumulative > choice) {
         this._mode = this._modes[i].mode;
         break;
       }
